@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Using on()</title>
+    <style type="text/css">
+        table {
+            width: 300px;
+        }
+        .lightHighlight {background-color: #ccc;}
+    </style>
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script>
+        
+        $(document).ready(function () {
+            //Attaches events to the tbody and triggers when you click on the td child. 
+            //Efficent way to add many click events
+            var customers = $('#customers tbody')
+            customers.on('click', 'td', function () {
+                alert($(this).text());
+            });
+            $('#addRow').on('click', function () {
+                customers.append('<tr><td>Jane</td><td>Doe</td></tr>')
+            });
+
+            //Add hover event, first param is enter second is leave
+            //$('#customers tr').hover(
+            //    //mouseenter
+            //    function () {
+            //        $(this).css('background-color', 'grey')
+            //    },
+            //    //mouseleave
+            //    function () {
+            //        $(this).css('background-color', 'white')
+            //    }
+            //);d
+            //If only first param, will apply the enter and remove automatically on leave
+            //$('#customers tr').hover(function () {
+            //    $(this).toggleClass('lightHighlight');
+            //});
+
+        });
+    </script>
+</head>
+<body>
+    <div id="selectedPerson"></div>
+    <button id="addRow">Add Row</button>
+    <table id="customers">
+        <tr>
+            <td>John</td>
+            <td>Doe</td>
+        </tr>
+        <tr>
+            <td>Jim</td>
+            <td>Leaner</td>
+        </tr>
+        <tr>
+            <td>Michelle</td>
+            <td>James</td>
+        </tr>
+        <tr>
+            <td>Heedy</td>
+            <td>Faust</td>
+        </tr>
+        <tr>
+            <td>Tina</td>
+            <td>Smith</td>
+        </tr>
+        <tr>
+            <td>Supna</td>
+            <td>Patoria</td>
+        </tr>
+        <tr>
+            <td>Spike</td>
+            <td>Francis</td>
+        </tr>
+        <tr>
+            <td>Dan</td>
+            <td>Wahlin</td>
+        </tr>
+    </table>
+    
+</body>
+</html>

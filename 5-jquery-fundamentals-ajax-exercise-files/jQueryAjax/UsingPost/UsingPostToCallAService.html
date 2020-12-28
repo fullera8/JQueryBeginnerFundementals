@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        //post call to return the first customer from the getcustoemrs function on the source page
+        $(document).ready(function () {
+            $('#MyButton').click(function () {
+                $.post(
+                    '../CustomerService.svc/GetCustomers',
+                    null,
+                    function (data) {
+                        var customer = data.d[0]; //Note that because the post will wrap the object returned in the body, you will need to call elements
+                        $('#OutputDiv').html([customer.FirstName, customer.LastName].join(' '));
+                    },
+                    'json'
+                );
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="MyButton">Click to Get Customers From WCF Service</button>
+    <div id="OutputDiv"></div>
+</body>
+</html>

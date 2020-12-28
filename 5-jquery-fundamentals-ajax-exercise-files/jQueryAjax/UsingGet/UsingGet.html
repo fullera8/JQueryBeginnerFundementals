@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        //get data on button click
+        $(document).ready(function () {
+            $('#MyButton').click(function () {
+                //basic get
+                $.get('../HelpDetails.html', function (data) {
+                    $('#OutputDiv').html(data);
+                });
+                //basic get json
+                $.get('../CustomerJSON.aspx', {id:5}, function (data) {
+                    alert(['ID:',data.ID,data.FirstName,data.LastName].join(' '));
+                }, 'json');
+                //getJSON
+                $.getJSON('../CustomerJSON.aspx', { id: 5 }, function (data) {
+                    alert(['ID:', data.ID,'|', data.FirstName, data.LastName].join(' '));
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="MyButton">Click to Get Help HTML</button>
+    <div id="OutputDiv"></div>
+</body>
+</html>
